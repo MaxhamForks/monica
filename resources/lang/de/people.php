@@ -141,6 +141,8 @@ return [
     'age_approximate_in_years' => 'ungefähr :age Jahre alt',
     'age_exact_in_years' => ':age Jahre alt',
     'age_exact_birthdate' => 'geboren am :date',
+    'age_will_turn_exact' => 'wird :age Jahre alt',
+    'age_turned_exact' => 'wurde :age Jahre alt',
 
     // Last called
     'last_called' => 'Letztes Telefonat: :date',

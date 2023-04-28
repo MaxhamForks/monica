@@ -266,6 +266,28 @@ class DateHelper
     }
 
     /**
+     * Get the format of a date based on the given month.
+     *
+     * @param  int  $month
+     * @param  ?string  $format
+     * @return string
+     */
+    public static function getMonthAndYearWithFormat(int $month, ?string $format = null): string
+    {
+        $date = Carbon::now(static::getTimezone());
+        if($date->month > $month) {
+            $date->addYear();
+        }
+        $date->setMonth($month);
+
+        if (null == $format) {
+            $format = trans('format.short_month_year', [], Carbon::getLocale());
+        }
+
+        return $date->translatedFormat($format) ?: '';
+    }
+
+    /**
      * Gets the next theoritical billing date.
      * This is used on the Upgrade page to tell the user when the next billing
      * date would be if he subscribed.

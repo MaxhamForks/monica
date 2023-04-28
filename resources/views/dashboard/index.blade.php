@@ -85,6 +85,9 @@
               </ul>
             </div>
           </div>
+
+          <x-birthday-panel />
+
         </div>
       </div>
     </section>

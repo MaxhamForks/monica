@@ -141,6 +141,8 @@ return [
     'age_approximate_in_years' => 'around :age years old',
     'age_exact_in_years' => ':age years old',
     'age_exact_birthdate' => 'born :date',
+    'age_will_turn_exact' => 'will turn :age years',
+    'age_turned_exact' => 'turned :age years old',
 
     // Last called
     'last_called' => 'Last called: :date',
