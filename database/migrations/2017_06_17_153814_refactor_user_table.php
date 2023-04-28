@@ -24,7 +24,9 @@ class RefactorUserTable extends Migration
                 'gender',
                 'deleted_at',
             ]);
+        });
 
+        Schema::table('users', function (Blueprint $table) {
             $table->integer('invited_by_user_id')->after('contacts_sort_order')->nullable();
         });
 

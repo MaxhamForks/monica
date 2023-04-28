@@ -28,10 +28,11 @@ class AddPartialNotion extends Migration
         }
 
         Schema::table('contacts', function (Blueprint $table) {
-            $table->dropColumn(
-                'is_significant_other',
-                'is_kid'
-            );
+            $table->dropColumn('is_significant_other');
+        });
+
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->dropColumn('is_kid');
         });
     }
 }

@@ -416,7 +416,7 @@ class AddForeignKeys extends Migration
     {
         // this table is not used anymore, we can safely remove it from the
         // database
-        Schema::drop('notifications');
+        Schema::dropIfExists('notifications');
     }
 
     private function cleanPetTable()
@@ -428,6 +428,7 @@ class AddForeignKeys extends Migration
                 PetCategory::findOrFail($pet->pet_category_id);
             } catch (ModelNotFoundException $e) {
                 $pet->delete();
+
                 continue;
             }
         }
@@ -610,6 +611,9 @@ class AddForeignKeys extends Migration
             $table->unsignedInteger('account_id')->change();
             $table->unsignedInteger('currency_id')->nullable()->change();
             $table->unsignedInteger('invited_by_user_id')->nullable()->change();
+        });
+
+        Schema::table('users', function (Blueprint $table) {
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('set null');
             $table->foreign('invited_by_user_id')->references('id')->on('users')->onDelete('set null');

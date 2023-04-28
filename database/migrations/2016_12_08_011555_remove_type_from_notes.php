@@ -14,7 +14,11 @@ class RemoveTypeFromNotes extends Migration
     {
         Schema::table('notes', function ($table) {
             $table->dropColumn('type');
+        });
+        Schema::table('notes', function ($table) {
             $table->dropColumn('activity_type_id');
+        });
+        Schema::table('notes', function ($table) {
             $table->dropColumn('sticky');
         });
     }

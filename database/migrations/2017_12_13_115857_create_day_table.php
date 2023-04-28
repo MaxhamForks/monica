@@ -26,8 +26,8 @@ class CreateDayTable extends Migration
             $table->increments('id');
             $table->integer('account_id');
             $table->dateTime('date');
-            $table->integer('journalable_id');
-            $table->string('journalable_type');
+            $table->integer('journalable_id')->nullable();
+            $table->string('journalable_type')->nullable();
             $table->timestamps();
         });
     }

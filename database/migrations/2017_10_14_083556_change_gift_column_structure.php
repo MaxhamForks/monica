@@ -25,9 +25,7 @@ class ChangeGiftColumnStructure extends Migration
         });
 
         Schema::table('gifts', function ($table) {
-            $table->dropColumn([
-                'about_object_type',
-            ]);
+            $table->dropColumn('about_object_type');
         });
 
         Schema::table('gifts', function ($table) {
@@ -61,11 +59,15 @@ class ChangeGiftColumnStructure extends Migration
 
         Schema::table('gifts', function (Blueprint $table) {
             $table->dropColumn('is_an_idea');
+        });
+        Schema::table('gifts', function (Blueprint $table) {
             $table->dropColumn('has_been_offered');
         });
 
         Schema::table('gifts', function ($table) {
             $table->renameColumn('is_is_an_idea', 'is_an_idea');
+        });
+        Schema::table('gifts', function ($table) {
             $table->renameColumn('is_has_been_offered', 'has_been_offered');
         });
     }

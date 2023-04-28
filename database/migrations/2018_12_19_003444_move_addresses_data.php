@@ -33,14 +33,8 @@ class MoveAddressesData extends Migration
             }
         });
 
-        Schema::table('addresses', function (Blueprint $table) {
-            $table->dropColumn('street');
-            $table->dropColumn('city');
-            $table->dropColumn('province');
-            $table->dropColumn('postal_code');
-            $table->dropColumn('country');
-            $table->dropColumn('latitude');
-            $table->dropColumn('longitude');
-        });
+        foreach (['street', 'city', 'province', 'postal_code', 'country', 'latitude', 'longitude'] as $field) {
+            Schema::table('addresses', fn(Blueprint $table) => $table->dropColumn($field));
+        }
     }
 }

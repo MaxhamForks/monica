@@ -13,11 +13,9 @@ class DropSpecialDateIdFromReminders extends Migration
      */
     public function up()
     {
-        Schema::table('reminders', function (Blueprint $table) {
-            $table->dropColumn('special_date_id');
-            $table->dropColumn('last_triggered');
-            $table->dropColumn('next_expected_date');
-        });
+        foreach (['special_date_id', 'last_triggered', 'next_expected_date'] as $field) {
+            Schema::table('reminders', fn(Blueprint $table) => $table->dropColumn($field));
+        }
 
         Schema::table('special_dates', function (Blueprint $table) {
             $table->dropColumn('reminder_id');
